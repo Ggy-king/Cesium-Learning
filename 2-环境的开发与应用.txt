@@ -1,0 +1,9 @@
+正常使用vue来
+
+# 创建vue项目
+
+# npm i cesium 安装cesium
+
+# 在config中配置相关信息
+
+# 在vue文件中创建一个盒子 使cesium实例化

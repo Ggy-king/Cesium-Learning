@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./Cesium-1.104/Build/Cesium/Cesium.js"></script>
+    <link href="./Cesium-1.104/Build/Cesium/Widgets/widgets.css" rel="stylesheet" />
+    <style>
+        html,
+        body,
+        #cesiumContainer {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        /* 二 */
+
+        /* .cesium-viewer-toolbar,
+        .cesium-viewer-animationContainer,
+        .cesium-viewer-timelineContainer,
+        .cesium-viewer-bottom{
+            display: none !important;
+        }
+
+        .cesium-viewer-credits{
+            display: none !important;
+        }
+
+        .cesium-viewer-fullscreenContainer{
+            display: none !important;
+            position: absolute;
+            top: 0;
+        } */
+    </style>
+
+</head>
+
+<body>
+    <div id="cesiumContainer"></div>
+    <script>
+        // 方法一  通过js来控制组件显示与隐藏
+        // 方法二  通过css来控制组件显示与隐藏
+
+        // 一
+        var viewer = new Cesium.Viewer("cesiumContainer", {
+            animation: false, // 动画小组件
+            baseLayerPicker: false, // 底层组件，选择三维数字地球的地图(imagery and terrain)
+            fullscreenButton: false, // 全屏组件
+            vrButton: false, // vr模式
+            geocoder: false, // 地理编码(搜索)组件
+            homeButton: false, // 首页默认视角
+            infoBox: false, // 信息框
+            sceneModePicker: false, // 场景模式，切换2D 3D CV视角
+            selectionIndicator: false, // 是否选取指示器组件
+            timeline: false, // 时间轴
+            navigationHelpButton: false, // 帮助提示
+
+            // 最初应该看到导航说明 则为true
+            navigationInstructionsInitiallyVisible: false,
+
+
+
+        })
+        viewer._cesiumWidget._creditContainer.style.display = "none"  // 隐藏logo
+    </script>
+</body>
+
+</html>
