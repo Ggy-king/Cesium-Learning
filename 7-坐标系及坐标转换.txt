@@ -1,0 +1,80 @@
+# cesium常用坐标
+
+1 屏幕坐标 (像素)
+{
+    二维笛卡尔平面坐标，可通过new Cesium.Cartesian2(x,y)创建
+}
+
+
+2 笛卡尔空间直角坐标
+{
+    又称世界坐标，可通过new Cesium.Cartesian3(x,y,z)创建，平移旋转缩放，坐标原点在椭球的中心
+}
+
+3 地理坐标 (弧度)
+{
+    new Cesium.Cartographic(longitude,latitude,height)  经度弧度 纬度弧度 高度
+}
+
+4 经纬度坐标
+{
+    默认是WGS54坐标系，坐标原点在椭球的质心
+    经纬度转弧度:Cesium.Math.toRadians(degrees)
+    弧度转经纬度:Cesium.Math.toDegrees(radians)
+}
+
+
+# Cesium中常用的坐标转换
+
+1 经纬度转世界坐标
+{
+    1 直接转换
+    var cartesian3 = Cesium.Cartesian3.fromDegrees(lng,lat,height)
+
+    2 借助椭球对象 先转成弧度在转换
+    var cartographic = Cesium.Cartographic.fromDegrees(lng,lat,height)
+    var cartesian3 = ellipsoid.cartographicToCartesian(cartographic)
+}
+
+2 世界坐标转经纬度
+{
+    1 笛卡尔空间直角坐标转为地理坐标
+    var cartographic = Cesium.Cartographic.fromCartesian(cartesian3) //方法一
+    var cartographic = ellipsoid.cartesianToCartographic(cartesian3) //方法二
+
+    2 地理坐标转为经纬度坐标
+    var lat = Cesium.Math.toDegrees(cartographic.latitude)
+    var lng = Cesium.Math.toDegrees(cartographic.longitude)
+    var height = cartographic.height
+}
+
+3 弧度和经纬度互转
+{
+    经纬度转弧度: Cesium.Math.toRadians(degrees)
+    弧度转经纬度: Cesium.Math.toDegrees(radians)
+}
+
+4 屏幕坐标和世界坐标互转
+{
+    二维屏幕坐标转三维空间坐标(世界坐标)
+    var cartesian3 = scene.globe.pick(
+        viewer.camera.getPickRay(windowPosition),
+        scene
+    )
+    三维转二维 结果是cartesion2对象
+    windowPosition = Cesium.SceneTransfroms.wgs84ToWindowCoordinates(sence,cartesian3)
+
+}
+
+# 坐标转换工具
+当在笛卡尔坐标系下时 才能运用到计算机图形学中防射变换知识
+
+{
+    1 Cesium.Cartesian3                (相当于point3D)
+    2 Cesium.Matrix3                   (3 * 3矩阵)
+    3 Cesium.Matrix4                   (4 * 4矩阵)
+    4 Cesium.Quaternion                (四元数)
+    5 Cesium.Transforms                (包含将位置转换成各种参考系的功能)
+    6 Cesium.SceneTransfroms
+
+}
