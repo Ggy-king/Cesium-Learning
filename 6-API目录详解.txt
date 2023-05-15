@@ -1,0 +1,83 @@
+##
+
+# Viewer类
+{
+    imageryLayers 影像
+    terrainProvider 地形
+    dataSources 失量数据
+    entities 几何实体集合(用于空间数据可视化)
+    Widgets 组件，即Viewer初始页面上的组件
+    Camera 相机
+    Event 事件 鼠标事件 选中事件等
+}
+
+# Scene类
+{
+    primitives 图元
+    postProcessStages 后期处理
+    环境对象 如大气圈 天空盒 太阳月亮等
+    Event事件 如更新渲染等
+}
+
+# Camera类属性
+位置 方位角 俯仰角 翻滚角
+
+# 空间计算
+三维矩阵 四元数 四维矩阵 转换等
+
+############################################  Viewer  ############################################
+1 terrainProvider 地形
+{
+    1 ArcGISYiledElevationTerrainProvider           (ArcGIS)
+    2 CesiumTerrainProvider                         (cesium本身的)
+    3 EllipoidTerrainProvider                       (普通地形无高低起伏)
+    4 GoogleErathEnterpriseTerrainProvider          (谷歌的)
+    5 VRTheWorldTerrainProvider                     (VR的)
+}
+
+2 imageryLayers 影像太多了看文档吧
+
+3 dataSources 数据源
+{
+    1 CustomDataSource
+    2 CzlmDataSource
+    3 GeolsonDataSource
+    4 KmlDataSource
+}
+
+4 entities 模型构建 多 看文档
+
+5 Widgets 组件 多 看文档
+
+6 Scene 场景                             ##核心  太多了参考文档
+
+7 Camera 相机
+{
+    如
+    1 position                          (位置)
+    2 heading                           (方位角)
+    3 pitch                             (俯仰角)
+    4 roll                              (翻滚角)
+}
+
+8 Event 事件
+{
+    如
+    1 screenSpaceEvnetHandler           (鼠标控制)
+    2 selectedEntityChanged             (实体)
+    3 trackedEntityChanged              (动态实体)
+    4 clock.onTick                      (时钟)
+}
+
+
+
+
+
+
+
+
+############################################### 空间计算  ##################################
+1 Matrix3                                  (3*3矩阵 旋转变换)
+2 Quaternion                               (围绕某个向量旋转一定角度的变换)
+3 Matrix4                                  (4-4矩阵 旋转加平移变换)
+3 Transforms                               (包含将位置转换成各种参考系的功能)
