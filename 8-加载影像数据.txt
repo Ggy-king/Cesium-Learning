@@ -1,0 +1,35 @@
+# 影像图层类
+1 ImageryLayerCollection类
+{
+    ImageryLayer类对象的容器，可以装载，放置多个ImageryLayer或ImageryProvider类对象
+}
+
+2 ImageryLayer类
+{
+    Cesium中的影像图层，相当于皮毛、衣服、将数据源包裹在内，相关属性:透明度、亮度等
+}
+
+3 ImageryProvider类
+{
+    抽象类，子类封装了加载各种影像图层的方法  (并不特指，还包括互联网地图、TMS、WMS、WMTS、单个图片等)
+}
+
+
+# 各类影像服务的加载
+1 ArcGIS影像服务-ArcGISMapServerlmageryProvider
+
+2 Bing地图影像服务-BingMapslmageryProvider
+
+3 Mapbox影像服务-MapboxlmageryProvider和MapboxStylelmageryProvider
+
+4 OSM影像服务-OpenStreetMaplmageryProvider
+
+5 WMTS-WebMapTileServicelmageryProvider
+
+6 WMS-WebMapTileServicelmageryProvider
+
+7 自定义影像服务-UrlTemplatelmargeryProvider
+
+8 单张图片-SingleTilelmageryProvider
+
+9 开发调试-GridlmageryProvider类和TileCoordinateslmageryProvider
