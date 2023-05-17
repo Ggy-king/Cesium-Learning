@@ -1,0 +1,24 @@
+# 地形图层类
+
+Cesium提供了TreeainProvider基类 该Provider负责每一个Tile对应的地形数据的构建 定义了一套地形Provider需要实现的接口
+和规范，但本身并不会参与其中的操作。基于此类，cesium为我们封装了5个现成的继承类操作地形数据
+
+Cesium中的地形类是通过不同的TreeainProvider控制的，然后把某一个实例化的treeainProvider赋值给Viewer.terrainProvider
+来控制地形数据的显隐。所以Cesium中的地形图层只能有一个
+
+
+# 各类地形数据的加载
+1 Cesium默认地形 - EllipsoidTerrainProvider
+{
+    光滑椭球体，没有任何地形起伏效果即高度为0，不支持水面，法线，但不从服务器请求数据
+}
+
+2 ArcGIS地形 - ArcGISTiledElevationTerrainProvider
+{
+    名副其实的高度不为0，原理和EllipsoidTerrainProvider一样，且不支持水面，法线
+}
+
+3 Cesium标准地形 - CesiumTerrainProvider
+{
+    TIN网格的STK地形，支持水面法线，同时数据量比较小
+}
