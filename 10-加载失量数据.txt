@@ -1,0 +1,56 @@
+# 什么是失量数据
+{
+    1 失量数据是用X Y Z坐标表示地图图形或地理实体位置数据，一般是通过记录坐标的方式尽可能将地理实体空间位置表现的确认无误
+， 常见的失量数据有：点线面等格式。我们使用的失量数据原因，就是因为失量数据具有数据结构紧凑、冗余度低、有利于网络和检索
+分析、图形质量好、精度高等优点
+
+    2 日常最常见的失量数据格式就是shapfile,他是由Esri公司开发的一种空间数据开放格式。同时shapfile也成为了GIS的标杆，
+    几乎所有商业公司都支持shap。通常情况下，一个shapfile带有.shp.shx.dbf和其他文件 .prj .sbn
+}
+
+# shp文件包含那些数据文件
+{必含文件
+    1 主文件.shp  :存储地理要素的几何信息
+    2 索引文件.shx  :存储要素几何图形的索引信息
+    3 dBase表文件.dbf  :存储地理要素的属性信息(非几何信息)
+}
+{可选文件
+    1 空间参考信息.prj  :存储空间参考信息，即地理坐标信息和投影坐标系统信息，使用well-known文本格式WKT进行描述
+    2 几何体的空间索引文件.snb .sbx 只读的Shapefile 的几何体的空间索引文件.fbn .fbx得到
+}
+
+# Cesium支持的失量数据格式
+{
+    1 geojson
+    2 topojson
+    3 kml
+    4 具有时间特性的czml
+
+    是以Datesource后缀去命名的相关类 viewer.dataSources.add(dataSource)
+}
+
+# geojson数据
+{
+    1 geojson  :直接使用Polygon、point之类的几何体来表示图形
+    2 topojson  :GeoJSON的扩展形式，TopoJSON中的每一个几何体都是共享边(称为arcs)整合后形成的 文件大小缩小了80%
+}
+{
+    在线工具推荐
+    1 JSON在线解析及格式化              www.json
+    2 在线生成GeoJSON                  geojson.io   
+    3 shp数据转GeoJSON和TopoJSON       mapshaper.org
+    4 GEOJson和TopoJSON在线转换        jeffpaine.github.io/geojson-totojson/
+}
+
+
+# KML数据
+{
+    KML是一种基于XML语法格式的文件，用来描述和存储地理信息数据(点线面多边形多面体以及模型) 他跟XML最大的不同就是KML描述的
+    是地理信息数据。同时KML已经被OGC采用  .KML .KMZ
+}
+
+
+# CZML数据
+{
+    CZML可以使cesium很炫酷的dongt动态展示数据，CZML是一种JSON格式的字符串 用于描述与时间有关的动画场景。
+}
